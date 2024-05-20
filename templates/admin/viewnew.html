@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Home Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #444;
+    }
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .navbar-nav .nav-link {
+      font-size: 1.1rem;
+      color: #444;
+      transition: all 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #007bff;
+    }
+    .header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .header p {
+      font-size: 1.2rem;
+    }
+    .content {
+      padding: 50px 0;
+    }
+    .content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 1.1rem;
+    }
+    .footer {
+      background-color: #111112;
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 1.1rem;
+    }
+    
+    .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-img-top {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 18px;
+            color: #6c757d;
+        }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo-blue.png' %}" alt="" width="50%"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-light" href="{% url 'adminindex' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'addcars' %}">Add Latest Cars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'newcars' %}">Latest Cars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">FeaturedCars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'add_featuredcars' %}">Add Featured Cars</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+       
+    </style>
+</head>
+<body>
+    <div class="container mt-5 p-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{{ car.image.url }}" class="img-fluid" alt="{{ car.name }}">
+            </div>
+            <div class="col-lg-6">
+                <h2>{{ car.name }}</h2>
+                <p>Price: ${{ car.price }}</p>
+                <p>Description: {{ car.desc }}</p>
+                <a href="{% url 'updatenewcars' car.id %}" class="btn btn-info">Edit</a>
+                <form action="{% url 'delete_newcar' car.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+  <footer class="footer">
+    <div class="container p-5">
+      <p>&copy; 2024 Malayalam</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

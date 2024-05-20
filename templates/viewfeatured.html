@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .car-details {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .car-details:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .car-details img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .car-details img:hover {
+            transform: scale(1.05);
+        }
+        .car-details h2 {
+            margin-top: 0;
+            color: #343a40;
+            transition: color 0.3s ease-in-out;
+        }
+        .car-details:hover h2 {
+            color: #007bff;
+        }
+        .car-details p {
+            margin-bottom: 10px;
+            color: #6c757d;
+            transition: color 0.3s ease-in-out;
+        }
+        .car-details:hover p {
+            color: #495057;
+        }
+        .car-details ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .car-details ul li {
+            list-style-type: disc;
+            color: #6c757d;
+            transition: color 0.3s ease-in-out;
+        }
+        .car-details ul li:hover {
+            color: #495057;
+        }
+        .footer {
+      background-color: #111112;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      margin-top: 50PX;
+    }
+    .footer p {
+      font-size: 1.1rem;
+    }
+    
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo-blue.png' %}" alt="" width="50%"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link text-light" href="{% url 'index' %}">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+        <div class="car-details">
+            <img src="{{ car.image.url }}" alt="Car Image">
+            <h2>{{ car.name }}</h2>
+            <p><strong>Price:</strong>{{ car.price }}Lakh</p>
+            <p><strong>Description:</strong> {{ car.desc }}</p>
+            <a href="" class="btn btn-primary">Request Test Drive</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container p-5">
+          <p>&copy; 2024 Malayalam Vehicles</p>
+        </div>
+      </footer>
+    
+      <!-- Bootstrap JS (Optional) -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
